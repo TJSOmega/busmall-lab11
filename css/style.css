@@ -1,0 +1,8 @@
+body {
+  background-color: greenyellow;
+}
+
+#mainsection {
+  border: 5px black;
+  width: 400px auto;
+}
