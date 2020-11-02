@@ -103,3 +103,5 @@ productRandomAssignment()
   
 
 mainSection.addEventListener('click', eventHandler);
+
+
