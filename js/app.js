@@ -54,7 +54,7 @@ new Product('wine-glass');
 console.log(productsList)
 
 function productRandomAssignment() {
-    while (chosenProducts.length < 3) {
+    while (chosenProducts.length < 6) {
     var uniqueProduct = getRandomproduct();
     while (chosenProducts.includes(uniqueProduct)) {
       uniqueProduct = getRandomproduct();
@@ -67,7 +67,7 @@ function productRandomAssignment() {
 
 function renderProducts(){
 
-  chosenProducts = []
+  // chosenProducts = []
 
   productRandomAssignment()
   
@@ -88,6 +88,7 @@ function renderProducts(){
   productsList[prod3].views++;
 };
 
+
 function renderResults() {
   for (var i = 0; i < productsList.length; i++){
     var li = document.createElement('li')
@@ -98,39 +99,48 @@ function renderResults() {
 };
 
 
+function productChangeOver() {
+  if (chosenProducts.includes(chosenProducts[0,1,2])) {
+    chosenProducts.shift();
+    chosenProducts.shift();
+    chosenProducts.shift();
+  }
+}
 
 
-
-renderProducts()
-
-// productRandomAssignment()
-
-// console.log(chosenProducts)
 
 
 function eventHandler(event) {
 
   var productClick = event.target.alt;
-  click++;
+
+ if (click !== totalClicks) {
+   click++;
+  productChangeOver()
+  renderProducts()
+  }
 
 
   for (var i = 0; i < productsList.length; i++) {
     if (productClick === productsList[i].name) {
       productsList[i].votes++;
       
-    }
+    };
 
     
-  }
-  renderProducts();
+  };
+  // productChangeOver();
+  // renderProducts();
 
   if (click === totalClicks) {
     mainSection.removeEventListener('click', eventHandler);
 
     renderResults();
-  }
-}
+  };
+};
 
+
+renderProducts();
 
 mainSection.addEventListener('click', eventHandler);
 
