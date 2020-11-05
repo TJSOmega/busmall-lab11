@@ -6,3 +6,12 @@ body {
   border: 5px black;
   width: 400px auto;
 }
+
+img {
+  width: 400px;
+  height: 400px;
+}
+
+section li {
+  display: inline;
+}
