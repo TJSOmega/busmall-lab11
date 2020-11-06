@@ -11,28 +11,27 @@ h1 {
   border: solid  10px black;
   padding: 30px;
 }
-#mainsection {
+#mainSection {
   border: 5px black;
   height: 400px;
   margin: auto;
 
 }
 
-/* #mainsection ul li {
-  height: 400px;
+#mainSection ul {
+  width:88.35%;
   background-color: black;
   margin: auto;
-} */
+}
 
 img {
   width: 400px;
   height: 400px;
-
 }
 
-section li {
-  display: inline-block;
-  width: 600px;
+#mainSection li {
+  display: inline;
+  width: 100%;
   margin: auto;
   
 }
