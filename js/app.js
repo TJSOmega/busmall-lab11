@@ -9,7 +9,9 @@ var imageThree = document.getElementById('imageThree');
 
 var mainSection = document.getElementById('mainSection')
 var list = document.getElementById('list')
-
+var viewsArray = []
+var votesArray = []
+var namesArray = []
 var click = 0
 var totalClicks = 25
 //Constructor
@@ -51,7 +53,7 @@ new Product('usb');
 new Product('water-can');
 new Product('wine-glass');
 
-console.log(productsList)
+// console.log(productsList)
 
 function productRandomAssignment() {
     while (chosenProducts.length < 6) {
@@ -61,13 +63,13 @@ function productRandomAssignment() {
     }
     chosenProducts.push(uniqueProduct);
   }
-  console.log('ChosenProduct Array', chosenProducts)
-}
+  // console.log('ChosenProduct Array', chosenProducts)
+};
 
 
 function renderProducts(){
 
-  // chosenProducts = []
+
 
   productRandomAssignment()
   
@@ -104,11 +106,29 @@ function productChangeOver() {
     chosenProducts.shift();
     chosenProducts.shift();
     chosenProducts.shift();
+  };
+};
+
+function calculateViewsVotesName() {
+  var views
+  var votes
+  var names
+
+  for (var i = 0; i < productsList.length; i++) {
+    views = productsList[i].views
+    viewsArray.push(views)
+  }
+
+  for (var i = 0; i < productsList.length; i++) {
+    votes = productsList[i].votes
+    votesArray.push(votes)
+  }
+
+  for (var i = 0; i < productsList.length; i++) {
+    names = productsList[i].name
+    namesArray.push(names)
   }
 }
-
-
-
 
 function eventHandler(event) {
 
@@ -118,7 +138,7 @@ function eventHandler(event) {
    click++;
   productChangeOver()
   renderProducts()
-  }
+  };
 
 
   for (var i = 0; i < productsList.length; i++) {
@@ -136,10 +156,59 @@ function eventHandler(event) {
     mainSection.removeEventListener('click', eventHandler);
 
     renderResults();
+    calculateViewsVotesName();
+    getChart();
+    // console.log ('Views Array', viewsArray, 'Votes Array', votesArray)
   };
 };
 
 
+function getChart() { 
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: namesArray,
+
+        datasets: [{
+            label: '# of Views',
+            data: viewsArray,
+
+            backgroundColor:
+                'rgba(255, 99, 132, 0.2)',
+                
+            borderColor:
+                'rgba(255, 99, 132, 1)',
+
+            borderWidth: 1,
+        },
+      {
+            label: '# of Votes',
+
+            data: votesArray,
+
+            backgroundColor:
+
+                'rgba(54, 162, 235, 0.2)',
+
+            borderColor: 
+
+                'rgba(54, 162, 235, 1)',
+
+            borderWidth: 1,
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+}
 renderProducts();
 
 mainSection.addEventListener('click', eventHandler);
