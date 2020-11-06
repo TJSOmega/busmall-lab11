@@ -1,17 +1,58 @@
 body {
   background-color: greenyellow;
+  margin: auto;
+  width: 90%;
 }
 
+h1 {
+  text-align: center;
+  font-size: 35px;
+  margin: auto;
+  border: solid  10px black;
+  padding: 30px;
+}
 #mainsection {
   border: 5px black;
-  width: 400px auto;
+  height: 400px;
+  margin: auto;
+
 }
+
+/* #mainsection ul li {
+  height: 400px;
+  background-color: black;
+  margin: auto;
+} */
 
 img {
   width: 400px;
   height: 400px;
+
 }
 
 section li {
-  display: inline;
+  display: inline-block;
+  width: 600px;
+  margin: auto;
+  
+}
+
+#container {
+  width: 940px;
+  height: 920px;
+  margin: auto;
+  border: solid 5px black;
+  padding: 20px
+}
+
+#list {
+  margin: auto;
+  width: 900px;
+  height: 900px;
+  font-size: 30px;
+  border: solid 5px black;
+}
+
+#list li {
+  font-size: 20px;
 }
