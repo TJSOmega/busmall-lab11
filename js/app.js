@@ -214,3 +214,5 @@ renderProducts();
 mainSection.addEventListener('click', eventHandler);
 
 
+
+
