@@ -32,6 +32,14 @@ function getRandomproduct() {
 };
 
 //declaration of objects
+var retrievedProducts = localStorage.getItem('stringResults')
+var parsedResults = JSON.parse(retrievedProducts)
+
+if (retrievedProducts) {
+
+productsList = parsedResults
+
+} else {
 new Product('bag');
 new Product('banana');
 new Product('bathroom');
@@ -52,6 +60,9 @@ new Product('unicorn');
 new Product('usb');
 new Product('water-can');
 new Product('wine-glass');
+}
+
+
 
 // console.log(productsList)
 
@@ -93,9 +104,12 @@ function renderProducts(){
 
 function renderResults() {
   for (var i = 0; i < productsList.length; i++){
-    var li = document.createElement('li')
+    var li = document.createElement('li');
   li.textContent = `${productsList[i].name} had ${productsList[i].votes} votes, and was seen ${productsList[i].views} times`
-  list.appendChild(li)
+  list.appendChild(li);
+
+  var stringResults = JSON.stringify(productsList);
+  localStorage.setItem('stringResults', stringResults);
   }
 
 };
